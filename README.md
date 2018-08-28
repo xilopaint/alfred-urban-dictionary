@@ -6,7 +6,7 @@ A workflow for [Alfred 3][1].
 
 ## Download and Installation
 
-Download the workflow file from [GitHub releases][2] and install it by double-clicking on `Foursquare Search.alfredworklow`.
+Download the workflow file from [GitHub releases][2] and install it by double-clicking on `Urban.Dictionary.alfredworklow`.
 
 ## Usage
 
