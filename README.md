@@ -1,4 +1,4 @@
-# Urban Dictionary
+# Urban Dictionary for Alfred
 
 ![alt text](demo.png)
 
