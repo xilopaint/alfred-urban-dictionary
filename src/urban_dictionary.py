@@ -6,6 +6,8 @@
 # MIT Licence. See http://opensource.org/licenses/MIT
 
 import sys
+from urllib import urlencode
+
 from workflow import Workflow3, web
 
 UPDATE_SETTINGS = {'github_slug': 'xilopaint/alfred-urban-dictionary'}
@@ -33,19 +35,17 @@ def show_results(query, data, url):
         word = result['word']
         thumbs_up_cnt = result['thumbs_up']
         thumbs_down_cnt = result['thumbs_down']
-        thumbs_up_sign = u"\U0001F44D".encode('utf-8')
-        thumbs_down_sign = u"\U0001F44E".encode('utf-8')
-        title = "{} • {} {} | {} {}".format(word,
-                                            thumbs_up_sign,
-                                            thumbs_up_cnt,
-                                            thumbs_down_sign,
-                                            thumbs_down_cnt)
-        definition = result['definition']
-        permalink = result['permalink']
+        thumbs_up_sign = u'\U0001F44D'
+        thumbs_down_sign = u'\U0001F44E'
+        title = u"{} • {} {} | {} {}".format(word,
+                                             thumbs_up_sign,
+                                             thumbs_up_cnt,
+                                             thumbs_down_sign,
+                                             thumbs_down_cnt)
         wf.add_item(valid=True,
                     title=title,
-                    subtitle=definition,
-                    arg=permalink)
+                    subtitle=result['definition'],
+                    arg=result['permalink'])
 
     return wf.send_feedback()
 
@@ -55,7 +55,9 @@ def main(wf):
     update_workflow()
     query = wf.args[0]
 
-    url = 'http://api.urbandictionary.com/v0/define?term=%s' % (query)
+    url = 'http://api.urbandictionary.com/v0/define?' + \
+        urlencode({'term': query.encode('utf-8')})
+
     data = get_data(query, url)
     show_results(query, data, url)
 
