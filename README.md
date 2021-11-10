@@ -2,7 +2,7 @@
 
 ![alt text](demo.png)
 
-A workflow for [Alfred 3][1].
+A workflow for [Alfred][1].
 
 ## Download and Installation
 
