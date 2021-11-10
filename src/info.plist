@@ -100,7 +100,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Cal `ud` to search through Urban Dictionary definitions and ratings.</string>
 	<key>uidata</key>
 	<dict>
 		<key>A86052C6-254B-48B5-BA86-3B44B7883695</key>
@@ -119,7 +119,7 @@
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/xilopaint</string>
 </dict>
