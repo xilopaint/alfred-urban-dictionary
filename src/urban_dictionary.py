@@ -1,12 +1,14 @@
-#!/usr/bin/env python
-# encoding: utf-8
+#!/usr/bin/env python3
 #
 # Copyright © 2018 Arthur Pinheiro
 #
 # MIT Licence. See http://opensource.org/licenses/MIT
 
+import http.client
+import json
 import sys
-from workflow import Workflow3, web
+import urllib.parse
+from workflow import Workflow
 
 UPDATE_SETTINGS = {'github_slug': 'xilopaint/alfred-urban-dictionary'}
 
@@ -22,22 +24,27 @@ def update_workflow():
         )
 
 
-def get_data(query, url, param):
-    """Return JSON object."""
-    r = web.get(url, params=param)
-    r.raise_for_status()
-    return r.json()
+def main(wf):
+    """Run workflow."""
+    update_workflow()
 
+    query = wf.args[0]
 
-def show_results(query, data):
-    """List results."""
+    param = {'term': query}
+    query_string = urllib.parse.urlencode(param)
+    url = '/v0/define?' + query_string
+    conn = http.client.HTTPSConnection('api.urbandictionary.com')
+    conn.request('GET', url)
+    res = conn.getresponse()
+    data = json.loads(res.read())
+
     for result in data['list']:
         word = result['word']
         thumbs_up_cnt = result['thumbs_up']
         thumbs_down_cnt = result['thumbs_down']
         thumbs_up_sign = u'\U0001F44D'
         thumbs_down_sign = u'\U0001F44E'
-        title = u'{} • {} {} | {} {}'.format(
+        title = '{} • {} {} | {} {}'.format(
             word,
             thumbs_up_sign,
             thumbs_up_cnt,
@@ -54,18 +61,6 @@ def show_results(query, data):
     return wf.send_feedback()
 
 
-def main(wf):
-    """Run workflow."""
-    update_workflow()
-    query = wf.args[0]
-
-    url = 'http://api.urbandictionary.com/v0/define'
-    param = {'term': query}
-
-    data = get_data(query, url, param)
-    show_results(query, data)
-
-
 if __name__ == '__main__':
-    wf = Workflow3(update_settings=UPDATE_SETTINGS)
+    wf = Workflow(update_settings=UPDATE_SETTINGS)
     sys.exit(wf.run(main))

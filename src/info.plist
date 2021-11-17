@@ -60,7 +60,7 @@
 				<key>runningsubtext</key>
 				<string>Fetching results...</string>
 				<key>script</key>
-				<string>python urban_dictionary.py "{query}"</string>
+				<string>python3 urban_dictionary.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -120,8 +120,10 @@
 			<integer>20</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.2</string>
+	<string>2.0.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/xilopaint</string>
 </dict>
