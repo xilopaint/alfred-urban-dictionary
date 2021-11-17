@@ -39,6 +39,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -77,7 +79,7 @@
 			<key>uid</key>
 			<string>E9F6C624-C607-49DB-9856-3E16605772E2</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -106,16 +108,16 @@
 		<key>A86052C6-254B-48B5-BA86-3B44B7883695</key>
 		<dict>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>235</integer>
 			<key>ypos</key>
-			<integer>40</integer>
+			<integer>20</integer>
 		</dict>
 		<key>E9F6C624-C607-49DB-9856-3E16605772E2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>30</integer>
+			<integer>25</integer>
 			<key>ypos</key>
-			<integer>40</integer>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>version</key>

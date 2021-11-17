@@ -6,8 +6,6 @@
 # MIT Licence. See http://opensource.org/licenses/MIT
 
 import sys
-from urllib import urlencode
-
 from workflow import Workflow3, web
 
 UPDATE_SETTINGS = {'github_slug': 'xilopaint/alfred-urban-dictionary'}
@@ -16,20 +14,22 @@ UPDATE_SETTINGS = {'github_slug': 'xilopaint/alfred-urban-dictionary'}
 def update_workflow():
     """Update and install workflow if a newer version is available."""
     if wf.update_available:
-        wf.add_item(title='A newer version of Urban Dictionary is available.',
-                    subtitle='Action this item to install the update.',
-                    autocomplete='workflow:update',
-                    icon='update.png')
+        wf.add_item(
+            title='A newer version of Urban Dictionary is available.',
+            subtitle='Action this item to install the update.',
+            autocomplete='workflow:update',
+            icon='update.png'
+        )
 
 
-def get_data(query, url):
+def get_data(query, url, param):
     """Return JSON object."""
-    r = web.get(url)
+    r = web.get(url, params=param)
     r.raise_for_status()
     return r.json()
 
 
-def show_results(query, data, url):
+def show_results(query, data):
     """List results."""
     for result in data['list']:
         word = result['word']
@@ -37,15 +37,19 @@ def show_results(query, data, url):
         thumbs_down_cnt = result['thumbs_down']
         thumbs_up_sign = u'\U0001F44D'
         thumbs_down_sign = u'\U0001F44E'
-        title = u"{} • {} {} | {} {}".format(word,
-                                             thumbs_up_sign,
-                                             thumbs_up_cnt,
-                                             thumbs_down_sign,
-                                             thumbs_down_cnt)
-        wf.add_item(valid=True,
-                    title=title,
-                    subtitle=result['definition'],
-                    arg=result['permalink'])
+        title = u'{} • {} {} | {} {}'.format(
+            word,
+            thumbs_up_sign,
+            thumbs_up_cnt,
+            thumbs_down_sign,
+            thumbs_down_cnt
+        )
+        wf.add_item(
+            valid=True,
+            title=title,
+            subtitle=result['definition'],
+            arg=result['permalink']
+        )
 
     return wf.send_feedback()
 
@@ -55,11 +59,11 @@ def main(wf):
     update_workflow()
     query = wf.args[0]
 
-    url = 'http://api.urbandictionary.com/v0/define?' + \
-        urlencode({'term': query.encode('utf-8')})
+    url = 'http://api.urbandictionary.com/v0/define'
+    param = {'term': query}
 
-    data = get_data(query, url)
-    show_results(query, data, url)
+    data = get_data(query, url, param)
+    show_results(query, data)
 
 
 if __name__ == '__main__':
