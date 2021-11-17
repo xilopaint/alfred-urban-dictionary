@@ -25,7 +25,7 @@
 	<key>createdby</key>
 	<string>Arthur Pinheiro</string>
 	<key>description</key>
-	<string>Search Urban Dictionary from Alfred 3</string>
+	<string>Search Urban Dictionary</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -52,9 +52,9 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
