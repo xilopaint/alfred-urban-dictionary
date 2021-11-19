@@ -1,13 +1,4 @@
-#!/usr/bin/env python
-# encoding: utf-8
-#
-# Copyright (c) 2014 Fabio Niephaus <fabio.niephaus@gmail.com>,
-#       Dean Jackson <deanishe@deanishe.net>
-#
-# MIT Licence. See http://opensource.org/licenses/MIT
-#
-# Created on 2014-08-16
-#
+#!/usr/bin/env python3
 
 """Self-updating from GitHub.
 
@@ -466,7 +457,9 @@ def latest_download(dls, alfred_version=None, prereleases=False):
     return None
 
 
-def check_update(repo, current_version, prereleases=False, alfred_version=None):
+def check_update(
+    repo, current_version, prereleases=False, alfred_version=None
+):
     """Check whether a newer release is available on GitHub.
 
     Args:
@@ -508,7 +501,8 @@ def check_update(repo, current_version, prereleases=False, alfred_version=None):
 
     if dl.version > current:
         wf().cache_data(
-            key, {"version": str(dl.version), "download": dl.dict, "available": True}
+            key,
+            {"version": str(dl.version), "download": dl.dict, "available": True}
         )
         return True
 

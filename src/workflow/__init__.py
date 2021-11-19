@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-# encoding: utf-8
-#
-# Copyright (c) 2014 Dean Jackson <deanishe@deanishe.net>
-#
-# MIT Licence. See http://opensource.org/licenses/MIT
-#
-# Created on 2014-02-15
-#
 
 """A helper library for `Alfred <http://www.alfredapp.com/>`_ workflows."""
 

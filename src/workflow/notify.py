@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-# encoding: utf-8
-#
-# Copyright (c) 2015 deanishe@deanishe.net
-#
-# MIT Licence. See http://opensource.org/licenses/MIT
-#
-# Created on 2015-11-26
-#
 
 # TODO: Exclude this module from test and code coverage in py2.6
 
@@ -306,7 +298,9 @@ if __name__ == "__main__":  # pragma: nocover
     p.add_argument(
         "-l", "--list-sounds", help="Show available sounds.", action="store_true"
     )
-    p.add_argument("-t", "--title", help="Notification title.", type=ustr, default="")
+    p.add_argument(
+        "-t", "--title", help="Notification title.", type=ustr, default=""
+    )
     p.add_argument(
         "-s", "--sound", type=ustr, help="Optional notification sound.", default=""
     )

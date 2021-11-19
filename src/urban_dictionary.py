@@ -10,24 +10,9 @@ import sys
 import urllib.parse
 from workflow import Workflow
 
-UPDATE_SETTINGS = {'github_slug': 'xilopaint/alfred-urban-dictionary'}
-
-
-def update_workflow():
-    """Update and install workflow if a newer version is available."""
-    if wf.update_available:
-        wf.add_item(
-            title='A newer version of Urban Dictionary is available.',
-            subtitle='Action this item to install the update.',
-            autocomplete='workflow:update',
-            icon='update.png'
-        )
-
 
 def main(wf):
     """Run workflow."""
-    update_workflow()
-
     query = wf.args[0]
 
     param = {'term': query}
@@ -62,5 +47,5 @@ def main(wf):
 
 
 if __name__ == '__main__':
-    wf = Workflow(update_settings=UPDATE_SETTINGS)
+    wf = Workflow()
     sys.exit(wf.run(main))

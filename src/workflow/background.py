@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """This module provides an API to run commands in background processes.
 
 Combine with the :ref:`caching API <caching-data>` to work from cached data
