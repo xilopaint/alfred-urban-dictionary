@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>923332E1-2F3F-4F47-8706-CC80DD6ACF97</string>
+				<string>1FDAAD4C-E365-4CA8-A5D9-302683B710CF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -97,28 +97,10 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
+				<key>concurrently</key>
 				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
 				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
 				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
 readonly remote_info_plist='https://raw.githubusercontent.com/xilopaint/alfred-urban-dictionary/master/src/info.plist'
@@ -193,21 +175,15 @@ fi</string>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>923332E1-2F3F-4F47-8706-CC80DD6ACF97</string>
+			<string>1FDAAD4C-E365-4CA8-A5D9-302683B710CF</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -233,7 +209,7 @@ fi</string>
 	<string>Call `ud` to search through Urban Dictionary definitions and ratings.</string>
 	<key>uidata</key>
 	<dict>
-		<key>923332E1-2F3F-4F47-8706-CC80DD6ACF97</key>
+		<key>1FDAAD4C-E365-4CA8-A5D9-302683B710CF</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>12</integer>
@@ -259,10 +235,8 @@ fi</string>
 			<integer>20</integer>
 		</dict>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
-	<string>2.1.0</string>
+	<string>2.1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/xilopaint</string>
 </dict>
