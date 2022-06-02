@@ -4,48 +4,52 @@
 #
 # MIT Licence. See http://opensource.org/licenses/MIT
 
-import http.client
-import json
+""""Alfred workflow aimed to search Urban Dictionary."""
+
 import sys
-import urllib.parse
-from workflow import Workflow
+
+from workflow import Workflow, web
+
+UPDATE_SETTINGS = {"github_slug": "xilopaint/alfred-urban-dictionary"}
+HELP_URL = "https://github.com/xilopaint/alfred-urban-dictionary"
 
 
-def main(wf):
+def main(wf):  # pylint: disable=redefined-outer-name
     """Run workflow."""
-    query = wf.args[0]
-
-    param = {'term': query}
-    query_string = urllib.parse.urlencode(param)
-    url = '/v0/define?' + query_string
-    conn = http.client.HTTPSConnection('api.urbandictionary.com')
-    conn.request('GET', url)
-    res = conn.getresponse()
-    data = json.loads(res.read())
-
-    for result in data['list']:
-        word = result['word']
-        thumbs_up_cnt = result['thumbs_up']
-        thumbs_down_cnt = result['thumbs_down']
-        thumbs_up_sign = u'\U0001F44D'
-        thumbs_down_sign = u'\U0001F44E'
-        title = '{} • {} {} | {} {}'.format(
-            word,
-            thumbs_up_sign,
-            thumbs_up_cnt,
-            thumbs_down_sign,
-            thumbs_down_cnt
+    if wf.update_available:
+        wf.add_item(
+            title="A newer version of Urban Dictionary is available.",
+            subtitle="Action this item to install the update.",
+            autocomplete="workflow:update",
+            icon="update.png",
         )
+
+    query = wf.args[0]
+    param = {"term": query}
+    url = "http://api.urbandictionary.com/v0/define"
+    r = web.get(url, params=param)
+    r.raise_for_status()
+    data = r.json()
+
+    results = data["list"]
+
+    for result in results:
+        word = result["word"]
+        thumbs_up_cnt = result["thumbs_up"]
+        thumbs_down_cnt = result["thumbs_down"]
+        thumbs_up_sign = "\U0001F44D"
+        thumbs_down_sign = "\U0001F44E"
+        title = f"{word}  {thumbs_up_sign} {thumbs_up_cnt}  {thumbs_down_sign} {thumbs_down_cnt}"
         wf.add_item(
             valid=True,
             title=title,
-            subtitle=result['definition'],
-            arg=result['permalink']
+            subtitle=result["definition"],
+            arg=result["permalink"],
         )
 
     return wf.send_feedback()
 
 
-if __name__ == '__main__':
-    wf = Workflow()
+if __name__ == "__main__":
+    wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
     sys.exit(wf.run(main))

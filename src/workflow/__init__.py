@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """A helper library for `Alfred <http://www.alfredapp.com/>`_ workflows."""
-
 import os
 
 # Workflow objects
@@ -33,8 +32,7 @@ from .workflow import (
     ICON_SYNC,
     ICON_TRASH,
     ICON_USER,
-    ICON_WARNING,
-    ICON_WEB
+    ICON_WEB,
 )
 
 # Filter matching rules
@@ -50,16 +48,18 @@ from .workflow import (
     MATCH_SUBSTRING,
 )
 
-__title__ = "Alfred-Workflow"
-__version__ = open(os.path.join(os.path.dirname(__file__), "version")).read()
-__author__ = "Dean Jackson"
-__licence__ = "MIT"
-__copyright__ = "Copyright 2014-2019 Dean Jackson"
+# pylint: disable=consider-using-with
+__version__ = open(
+    os.path.join(os.path.dirname(__file__), "version"), encoding="utf-8"
+).read()
+__title__ = "Alpynist"
+__author__ = "Arthur Pinheiro"
+__license__ = "MIT"
+__copyright__ = "Copyright 2022 Arthur Pinheiro"
 
 __all__ = [
     "Variables",
     "Workflow",
-    "Workflow3",
     "manager",
     "PasswordNotFound",
     "KeychainError",
@@ -84,7 +84,6 @@ __all__ = [
     "ICON_SYNC",
     "ICON_TRASH",
     "ICON_USER",
-    "ICON_WARNING",
     "ICON_WEB",
     "MATCH_ALL",
     "MATCH_ALLCHARS",
