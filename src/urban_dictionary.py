@@ -32,6 +32,8 @@ def main(wf):  # pylint: disable=redefined-outer-name
     data = r.json()
 
     results = data["list"]
+    results = sorted(
+        results, key=lambda results: results['thumbs_up'], reverse=True)
 
     for result in results:
         word = result["word"]
