@@ -10,7 +10,6 @@ import sys
 
 from workflow import Workflow, web
 
-UPDATE_SETTINGS = {"github_slug": "xilopaint/alfred-urban-dictionary"}
 HELP_URL = "https://github.com/xilopaint/alfred-urban-dictionary"
 
 
@@ -51,5 +50,5 @@ def main(wf):  # pylint: disable=redefined-outer-name
 
 
 if __name__ == "__main__":
-    wf = Workflow(update_settings=UPDATE_SETTINGS, help_url=HELP_URL)
+    wf = Workflow(help_url=HELP_URL)
     sys.exit(wf.run(main))
