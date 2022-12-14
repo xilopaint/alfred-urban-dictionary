@@ -29,7 +29,8 @@ A workflow for [Alfred][1].
 
 ## Contribute
 
-To report a bug or request a feature, please [create an issue][2] or [submit a pull request][3].
+To report a bug or request a feature, please [create an issue][2] or
+[submit a pull request][3].
 
 [1]:http://www.alfredapp.com/
 [2]:https://github.com/xilopaint/alfred-urban-dictionary/issues
