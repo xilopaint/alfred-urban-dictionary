@@ -122,8 +122,10 @@ def _background(
             if pid > 0:
                 if write:  # write PID of child process to `pidfile`
                     tmp = pidfile + ".tmp"
+
                     with open(tmp, "wb") as f:
                         f.write(pid.to_bytes(4, sys.byteorder))
+
                     os.rename(tmp, pidfile)
                 if wait:  # wait for child process to exit
                     os.waitpid(pid, 0)
@@ -212,7 +214,7 @@ def run_in_background(name, args, **kwargs):
         wf.logger.debug("[%s] command cached: %s", name, argcache)
 
     # Call this script
-    cmd = ["/usr/bin/python3", "-m", "workflow.background", name]
+    cmd = ["python3", "-m", "workflow.background", name]
     wf.logger.debug("[%s] passing job to background runner: %r", name, cmd)
     retcode = subprocess.run(cmd, check=True).returncode
 
@@ -233,6 +235,7 @@ def main(wf):  # pragma: no cover  # pylint: disable=redefined-outer-name
     """
     name = wf.args[0]
     argcache = _arg_cache(name)
+
     if not os.path.exists(argcache):
         msg = f"[{name}] command cache not found: {argcache}"
         wf.logger.critical(msg)
