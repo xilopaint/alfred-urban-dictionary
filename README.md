@@ -18,14 +18,14 @@
 </p>
 
 <p align="center">
-  <img src="demo.png">
+  <img src="src/images/about/demo.png">
 </p>
 
-A workflow for [Alfred][1].
+An [Alfred][1] workflow to search Urban Dictionary.
 
 ## Usage
 
-**Urban Dictionary** workflow can be used by the `ud` keyword.
+Search Urban Dictionary definitions via the `ud` keyword.
 
 ## Contribute
 
