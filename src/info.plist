@@ -106,7 +106,11 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Call `ud` to search through Urban Dictionary definitions and ratings.</string>
+	<string>## Usage
+
+Search Urban Dictionary definitions via the `ud` keyword.
+
+![demo](images/about/demo.png)</string>
 	<key>uidata</key>
 	<dict>
 		<key>A86052C6-254B-48B5-BA86-3B44B7883695</key>
