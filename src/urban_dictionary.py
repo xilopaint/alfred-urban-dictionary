@@ -31,11 +31,18 @@ def main(wf):  # pylint: disable=redefined-outer-name
         thumbs_up_sign = "\U0001F44D"
         thumbs_down_sign = "\U0001F44E"
         title = f"{word}  {thumbs_up_sign} {thumbs_up_cnt}  {thumbs_down_sign} {thumbs_down_cnt}"
-        wf.add_item(
+
+        item = wf.add_item(
             valid=True,
             title=title,
             subtitle=result["definition"],
             arg=result["permalink"],
+        )
+
+        item.add_modifier(
+            key="cmd",
+            subtitle="Show Definition in Large Type",
+            arg=result["definition"],
         )
 
     return wf.send_feedback()
