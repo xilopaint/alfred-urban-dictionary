@@ -27,6 +27,9 @@ An [Alfred][1] workflow to search Urban Dictionary.
 
 Search Urban Dictionary definitions via the `ud` keyword.
 
+When displaying the results, <kbd>↩&#xFE0E;</kbd> opens the page for the term on Urban
+Dictionary website, and <kbd>⌘</kbd><kbd>↩&#xFE0E;</kbd> shows the selected definition in Large Type.
+
 ## Contribute
 
 To report a bug or request a feature, please [create an issue][2] or
