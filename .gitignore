@@ -121,7 +121,7 @@ dmypy.json
 *.code-workspace
 
 # Alfred
-*.alfredworkflow
+prefs.plist
 .alfredversionchecked
 /cache
 
