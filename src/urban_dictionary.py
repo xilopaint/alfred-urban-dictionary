@@ -28,21 +28,23 @@ def main(wf):  # pylint: disable=redefined-outer-name
         word = result["word"]
         thumbs_up_cnt = result["thumbs_up"]
         thumbs_down_cnt = result["thumbs_down"]
-        thumbs_up_sign = "\U0001F44D"
-        thumbs_down_sign = "\U0001F44E"
-        title = f"{word}  {thumbs_up_sign} {thumbs_up_cnt}  {thumbs_down_sign} {thumbs_down_cnt}"
+        upvote_char = chr(9650)
+        downvote_char = chr(9660)
+        title = f"{word}  {upvote_char} {thumbs_up_cnt}  {downvote_char} {thumbs_down_cnt}"
+        definition = result["definition"].replace("[", "").replace("]", "")
+        permalink = result["permalink"]
 
         item = wf.add_item(
             valid=True,
             title=title,
-            subtitle=result["definition"],
-            arg=result["permalink"],
+            subtitle=definition,
+            arg=permalink,
         )
 
         item.add_modifier(
             key="cmd",
             subtitle="Show Definition in Large Type",
-            arg=result["definition"],
+            arg=definition,
         )
 
     return wf.send_feedback()
