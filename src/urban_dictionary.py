@@ -27,20 +27,19 @@ def main(wf):  # pylint: disable=redefined-outer-name
     results = data["list"]
 
     for result in results:
-        word = result["word"]
         definition = re.sub(r'\[|\]', '', result["definition"])
+        permalink = result["permalink"]
+        thumbs_up = result["thumbs_up"]
+        thumbs_down = result["thumbs_down"]
+        word = result["word"]
 
-        thumbs_up_cnt = result["thumbs_up"]
-        thumbs_down_cnt = result["thumbs_down"]
-        thumbs_up_sign = "\U0001F44D"
-        thumbs_down_sign = "\U0001F44E"
-
-        title = f'{word} · {thumbs_up_sign} {thumbs_up_cnt} / {thumbs_down_sign} {thumbs_down_cnt}'
+        title = f'{word} (▲ {thumbs_up} / ▼ {thumbs_down})'
+        subtitle = definition
 
         item = wf.add_item(
             title=title,
-            subtitle=definition,
-            arg=result["permalink"],
+            subtitle=subtitle,
+            arg=permalink,
             valid=True,
         )
 
