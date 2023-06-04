@@ -6,7 +6,6 @@
 
 """"Alfred workflow aimed to search Urban Dictionary."""
 
-import re
 import sys
 
 from workflow import Workflow, web
@@ -17,7 +16,6 @@ HELP_URL = "https://github.com/xilopaint/alfred-urban-dictionary"
 def main(wf):  # pylint: disable=redefined-outer-name
     """Run workflow."""
     query = wf.args[0]
-
     param = {"term": query}
     url = "http://api.urbandictionary.com/v0/define"
     r = web.get(url, params=param)
@@ -27,20 +25,20 @@ def main(wf):  # pylint: disable=redefined-outer-name
     results = data["list"]
 
     for result in results:
-        definition = re.sub(r'\[|\]', '', result["definition"])
-        permalink = result["permalink"]
-        thumbs_up = result["thumbs_up"]
-        thumbs_down = result["thumbs_down"]
         word = result["word"]
-
-        title = f'{word} (▲ {thumbs_up} / ▼ {thumbs_down})'
-        subtitle = definition
+        thumbs_up_cnt = result["thumbs_up"]
+        thumbs_down_cnt = result["thumbs_down"]
+        upvote_char = chr(9650)
+        downvote_char = chr(9660)
+        title = f"{word}  {upvote_char} {thumbs_up_cnt}  {downvote_char} {thumbs_down_cnt}"
+        definition = result["definition"].replace("[", "").replace("]", "")
+        permalink = result["permalink"]
 
         item = wf.add_item(
-            title=title,
-            subtitle=subtitle,
-            arg=permalink,
             valid=True,
+            title=title,
+            subtitle=definition,
+            arg=permalink,
         )
 
         item.add_modifier(
