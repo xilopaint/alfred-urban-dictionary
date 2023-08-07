@@ -13,8 +13,6 @@
   <img src="https://img.shields.io/badge/security-bandit-yellow"></a>
   <a href="https://www.codacy.com/gh/xilopaint/alfred-urban-dictionary/dashboard">
   <img src="https://app.codacy.com/project/badge/Grade/dfbb1bb917804d52ac4fba4e2866d7b9"></a>
-  <a href="https://github.com/xilopaint/alfred-urban-dictionary/blob/main/LICENSE">
-  <img src="https://img.shields.io/github/license/xilopaint/alfred-urban-dictionary"></a>
 </p>
 
 <p align="center">
